@@ -32,6 +32,9 @@ class Author(models.Model):
         self.rating = sum([
             article_sum, autor_write_comment_sum, by_autor_comment])
 
+    def __str__(self):
+        return self.user.get_username()
+
 
 class Category(models.Model):
     """Категория"""
@@ -61,14 +64,14 @@ class Post(models.Model):
         self.save()
 
     def preview(self):
-        return  f'{str(self.content).strip()}...'
+        return f'{str(self.content).strip()}...'
+
 
 class PostCategory(models.Model):
     """Связь пост и категории"""
 
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
 
 
 class Comment(models.Model):
@@ -90,4 +93,3 @@ class Comment(models.Model):
 
         self.rating -= 1
         self.save()
-

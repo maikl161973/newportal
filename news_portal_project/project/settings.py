@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'news_portal.wsgi.application'
+WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database

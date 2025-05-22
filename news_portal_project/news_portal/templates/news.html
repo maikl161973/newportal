@@ -1,0 +1,26 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+    <h1 align="center">Новости</h1>
+{% endblock title %}
+
+{% block content %}
+    <table align="center">
+        <thead>
+        <tr>
+            <th>Заголовок</th>
+            <th>Создана</th>
+            <th>Краткое содержание</th>
+        </tr>
+        </thead>
+        {% for new in news %}
+            <tr>
+                <td>{{ new.title|cencor }}</td>
+                <td>{{ new.created|date:'d M Y' }}</td>
+                <td>{{ new.content|truncatechars:20|cencor }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
