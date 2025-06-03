@@ -1,0 +1,16 @@
+{% extends 'default.html' %}
+
+{% block content %}
+{% if object.post_type == 1 %}
+    <h1>Новость</h1>
+{% else %}
+    <h1>Статья</h1>
+{% endif %}
+
+<hr>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+{% endblock content %}

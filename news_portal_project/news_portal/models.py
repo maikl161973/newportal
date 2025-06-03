@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 
 ARTICLE = 1
 NEWS = 2
@@ -40,6 +40,9 @@ class Category(models.Model):
     """Категория"""
     name = models.CharField(max_length=255, unique=True)
 
+    def __str__(self):
+        return f'{self.name.title()[:20]}'
+
 
 class Post(models.Model):
     """Пост"""
@@ -65,6 +68,9 @@ class Post(models.Model):
 
     def preview(self):
         return f'{str(self.content).strip()}...'
+
+    def get_absolute_url(self):
+        return reverse('news_detail', args=[str(self.id)])
 
 
 class PostCategory(models.Model):
