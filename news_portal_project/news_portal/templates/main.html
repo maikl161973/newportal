@@ -1,0 +1,17 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+    <h1 align="center" style="color:green">Новостной портал </h1>
+    <div align="center">( Пользователь: {{ username }} )</div>
+{% endblock title %}
+
+
+{% block content %}
+    <button><a href="news">Новости</a></button>
+    <br>
+    {% if is_user_not_auth %}
+        <button> <a href="accounts/login">Войти</a> </button>
+    {% endif %}
+{% endblock content %}

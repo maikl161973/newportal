@@ -40,5 +40,9 @@
                <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
            {% endif %}
         {% endif %}
+        <br>
+        {% if not is_author %}
+            <button><a href="/user_update">Стать автором</a></button>
+        {% endif %}
     </div>
 {% endblock content %}
